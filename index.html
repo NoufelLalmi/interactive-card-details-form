@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive card details form</title>
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+  <!-- add font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+  <!-- tailwind configs  -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lgrayish: 'hsl(270, 3%, 87%)',
+            dgrayish: 'hsl(279, 6%, 55%)',
+            vgrayish: 'hsl(278, 68%, 11%)',
+            red: 'hsl(0, 100%, 66%)',
+            input: 'hsl(249, 99%, 64%)'
+          },
+          backgroundImage: {
+            'bg-pattern': "url('./images/bg-main-desktop.png')",
+          }
+        },
+        fontFamily: {
+          'grotesk': 'Space Grotesk',
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="relative">
+    <img class="absolute" src="./images/bg-main-desktop.png" alt="desktop gradient">
+  </div>
+  <div class="relative p-48 ">
+    <div class="flex">
+      <div class="">
+        <div class="grid grid-cols-1 bg-no-repeat rounded bg-[url('./images/bg-card-front.png')] h-[16rem] w-[28rem]">
+          <!-- <img class="absolute" src="./images/bg-card-front.png" alt="desktop gradient"> -->
+          <div class="p-6  gap-10 grid grid-cols-1  font-grotesk text-white tracking-widest">
+            <div class="grid grid-cols-2 gap-2 place-items-center w-max">
+              <div class=" w-10 h-10 rounded-full bg-white"></div>
+              <div class=" w-4 h-4 rounded-full border-2"></div>
+            </div>
+            <div></div>
+            <div class="-mb-4">
+              <h1 class="text-3xl">9591 5678 9123 0000</h1>
+            </div>
+            <div class="flex justify-between">
+              <span>FALCIA LEIRE</span>
+              <span>09/12</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mx-24 mt-6 grid  place-items-center  grid-cols-1 bg-no-repeat rounded bg-[url('./images/bg-card-back.png')] h-[16rem] w-[28rem] font-grotesk text-white tracking-widest drop-shadow-2xl">
+          <!-- <img class="" src="./images/bg-card-back.png" alt="desktop gradient"> -->
+          <div class="col-start-2">
+            <span class="mr-12">000</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-red-100 font-grotesk mt-20">
+          <label class="block mb-8">
+            <span class="block text-sm uppercase tracking-widest text-vgrayish">Cardholder Name</span>
+            <!-- Using form state modifers, the classes can be identical for every input -->
+            <input type="text" placeholder="e.g. Jane Appleseed" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+              focus:outline-none focus:border-input focus:ring-1 focus:ring-dgrayish
+              text-dgrayish border-slate-200 shadow-none
+              invalid:border-red invalid:text-red
+              focus:invalid:border-red focus:invalid:red
+            " />
+          </label>
+          <label class="block">
+            <span class="block text-sm uppercase tracking-widest text-vgrayish">Email</span>
+            <input type="email" placeholder="e.g. 1234 5678 9123 0000" class="peer mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+            focus:outline-none focus:border-input focus:ring-1 focus:ring-dgrayish
+            invalid:border-red focus:invalid:border-red focus:invalid:ring-red" />
+            <p class="mt-2 invisible peer-invalid:visible text-red text-xs">
+              Wrong format, numbers only.
+            </p>
+          </label>
+          <div class="flex gap-6 py-4">
+            <label class="block">
+              <span class="block text-sm uppercase tracking-widest text-vgrayish">Exp. Date (MM/YY)</span>
+              <div class="flex w-[8rem] gap-2">
+                <div>
+                  <input type="number" required placeholder="MM" class="peer w-16 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                  focus:outline-none focus:border-input focus:ring-1 focus:ring-dgrayish
+                  invalid:border-red focus:invalid:border-red focus:invalid:ring-red" />
+                  <p class="mt-2 invisible peer-invalid:visible text-red text-xs">
+                    can't be blank
+                  </p>
+                </div>
+                <div>
+                  <input type="number" required placeholder="YY" class="peer w-16 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+              focus:outline-none focus:border-input focus:ring-1 focus:ring-dgrayish
+              invalid:border-red focus:invalid:border-red focus:invalid:ring-red" />
+                  <p class="invisible mt-2 peer-invalid:visible text-red text-xs">
+                    can't be blank
+                  </p>
+                </div>
+              </div>
+            </label>
+            <label class="block">
+              <span class="block text-sm uppercase tracking-widest text-vgrayish">CVC</span>
+              <div class="flex w-[8rem] ">
+                <div>
+                  <input type="number" required placeholder="e.g. 123" class="peer w-24 mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                  focus:outline-none focus:border-input focus:ring-1 focus:ring-dgrayish
+                  invalid:border-red focus:invalid:border-red focus:invalid:ring-red" />
+                  <p class="mt-2 invisible peer-invalid:visible text-red text-xs">
+                    can't be blank
+                  </p>
+                </div>
+              </div>
+            </label>
+          </div>
+          <div class="text-white">
+            <button type="submit" class="bg-vgrayish h-10 w-full rounded">
+              Confirm
+            </button>
+          </div>
+          <!-- ... -->
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
